@@ -1,0 +1,3 @@
+Dark Gery color Code = #414042
+Gery color Code = #808285
+Red color Code = #be1e2d
