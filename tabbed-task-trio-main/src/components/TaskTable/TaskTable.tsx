@@ -345,6 +345,7 @@ export function TaskTable() {
               editingItem={editingItem}
               setEditingItem={setEditingItem}
               handleToggleExpand={handleToggleExpand}
+              onToggleExpand={handleToggleExpand}  // Add this line
               updateSubtask={updateSubtask}
               handleSaveEdit={handleSaveEdit}
               handleDeleteItem={handleDeleteItem}

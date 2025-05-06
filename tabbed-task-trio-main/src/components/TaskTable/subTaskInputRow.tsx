@@ -16,6 +16,7 @@ export function SubtaskInputRow({ taskId, selectedProjectId, onAdd }: {
   }) {
     const [name, setName] = useState("");
     const inputRef = useRef<HTMLInputElement>(null);
+    const rowRef = useRef<HTMLTableRowElement>(null);
     const { addSubtask } = useTaskContext();
   
     const handleSubmit = async () => {
@@ -27,10 +28,25 @@ export function SubtaskInputRow({ taskId, selectedProjectId, onAdd }: {
   
     useEffect(() => {
       inputRef.current?.focus();
-    }, []);
+
+      // Handle click outside
+      const handleClickOutside = (event: MouseEvent) => {
+        if (rowRef.current && !rowRef.current.contains(event.target as Node)) {
+          onAdd();
+        }
+      };
+
+      // Add event listener
+      document.addEventListener('mousedown', handleClickOutside);
+      
+      // Clean up
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [onAdd]);
   
     return (
-      <tr>
+      <tr ref={rowRef}>
         <td className="name-cell">
           <div className="flex items-center pl-8 w-full">
             <div className="min-w-0 flex-1">
@@ -41,6 +57,13 @@ export function SubtaskInputRow({ taskId, selectedProjectId, onAdd }: {
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleSubmit();
                   if (e.key === "Escape") onAdd();
+                }}
+                onBlur={() => {
+                  if (name.trim()) {
+                    handleSubmit();
+                  } else {
+                    onAdd();
+                  }
                 }}
                 placeholder="Enter subtask name"
                 className="w-full border-0 shadow-none focus-visible:ring-0 pl-2 py-2 text-sm"

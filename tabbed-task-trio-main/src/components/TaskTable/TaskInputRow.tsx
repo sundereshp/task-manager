@@ -23,9 +23,8 @@ export function TaskInputRow({ selectedProjectId }: { selectedProjectId: string 
     <tr>
       <td className="name-cell">
         <div className="flex items-center w-full">
-          
           <div className="min-w-0 flex-1 pl-2">
-            <div className="max-w-2xl">
+            <div className="border border-input rounded-md bg-background shadow-sm transition-colors focus-within:ring-1 focus-within:ring-ring">
               <Input
                 ref={inputRef}
                 value={taskName}
@@ -34,14 +33,14 @@ export function TaskInputRow({ selectedProjectId }: { selectedProjectId: string 
                   if (e.key === "Enter") handleAdd();
                   if (e.key === "Escape") setTaskName("");
                 }}
-                placeholder="Enter task name"
+                placeholder="Enter new task name"
                 className="w-full border-0 shadow-none focus-visible:ring-0 pl-4 py-2 text-base"
               />
             </div>
           </div>
         </div>
       </td>
-      <td colSpan={7}></td> {/* Empty cells for other columns */}
+      <td colSpan={7}></td>
     </tr>
   );
 }

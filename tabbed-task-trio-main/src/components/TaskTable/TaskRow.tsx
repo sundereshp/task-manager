@@ -123,10 +123,11 @@ export function TaskRow({
                         cy="50"
                         r="50"
                         fill="transparent"
-                        stroke="white"
+                        className="stroke-black dark:stroke-white"
                         strokeWidth={5}
                         strokeDasharray={`calc((2 * 3.14 * 45) / 8 - 20), 20`}
                       />
+
                     </svg>
                   </button>
                 </DropdownMenuTrigger>
@@ -239,7 +240,7 @@ export function TaskRow({
 
       {task.expanded && (
         <>
-          
+
           {(showSubtaskInput || !hasSubtasks) && (
             <SubtaskInputRow
               key={`subtask-input-${task.id}`}

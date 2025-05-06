@@ -104,11 +104,7 @@ export function TaskTableHeader({
         </div>
       )}
 
-      <div>
-        <Button onClick={onAddTask}>
-          <Plus className="h-4 w-4 mr-1" /> Add Task
-        </Button>
-      </div>
+      
     </div>
   );
 }

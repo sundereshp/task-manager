@@ -33,14 +33,14 @@ export function StatusCell({ status, onChange, disabled = false }: StatusCellPro
         className={cn(
           "border-none w-full",
           "flex items-center justify-between",
-          "text-sm",
+          "text-sm min-w-0",
           statusColors[status]
         )}
       >
         <SelectValue>
-          <div className="flex items-center gap-1">
-            <span className="text-lg">{selectedOption?.icon}</span>
-            <span className="truncate">{selectedOption?.label}</span>
+          <div className="flex items-center gap-1 min-w-0">
+            <span className="text-lg flex-shrink-0">{selectedOption?.icon}</span>
+            <span className="truncate block min-w-0">{selectedOption?.label}</span>
           </div>
         </SelectValue>
       </SelectTrigger>
@@ -49,12 +49,10 @@ export function StatusCell({ status, onChange, disabled = false }: StatusCellPro
           <SelectItem 
             key={option.value} 
             value={option.value}
-            className={cn(statusColors[option.value as Status])}
+            className="flex items-center gap-2"
           >
-            <div className="flex items-center gap-1">
-              <span className="text-lg">{option.icon}</span>
-              <span className="text-sm">{option.label}</span>
-            </div>
+            <span className="text-lg">{option.icon}</span>
+            <span>{option.label}</span>
           </SelectItem>
         ))}
       </SelectContent>

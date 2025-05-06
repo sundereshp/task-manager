@@ -104,10 +104,11 @@ export function ActionItemRow({
                       cy="50"
                       r="50"
                       fill="transparent"
-                      stroke="white"
+                      className="stroke-black dark:stroke-white"
                       strokeWidth={5}
                       strokeDasharray={`calc((2 * 3.14 * 45) / 8 - 20), 20`}
                     />
+
                   </svg>
                 </button>
               </DropdownMenuTrigger>
@@ -117,7 +118,7 @@ export function ActionItemRow({
                   { value: "inprogress", label: "In Progress", icon: "🔄" },
                   { value: "done", label: "Done", icon: "✅" }
                 ].map((option) => (
-                  <DropdownMenuItem 
+                  <DropdownMenuItem
                     key={option.value}
                     onClick={() => updateActionItem(selectedProjectId, taskId, subtaskId, actionItem.id, { status: option.value as Status })}
                     className="flex items-center gap-2"
